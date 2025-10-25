@@ -15,4 +15,8 @@ public class OutputDisplay {
             System.out.println(racer.getRacer() + " : " + "-".repeat(racer.getDistance()));
         }
     }
+
+    void showWinner(StringBuilder winnerList){
+        System.out.println("최종 우승자 : " + winnerList);
+    }
 }

@@ -25,33 +25,11 @@ public class RacingGame {
         }
 
         // 우승자 출력
-        int max = Integer.MIN_VALUE;
-        StringBuilder winnerList = new StringBuilder();
-
-        for (Car car : playerList) {
-            max = Math.max(max, car.getDistance());
-        }
-
-        for (Car car : playerList) {
-            if (max == car.getDistance()) {
-                if (winnerList.isEmpty()) {
-                    winnerList.append(car.getRacer());
-                } else {
-                    winnerList.append(", ").append(car.getRacer());
-                }
-            }
-        }
-
-        System.out.println("최종 우승자 : " + winnerList);
+        int bestRecord = findMaxRecord(playerList);
+        StringBuilder winnerList = getWinnerList(playerList, bestRecord);
+        outputDisplay.showWinner(winnerList);
     }
 
-
-    private static void forwardOrNot(Car racer) {
-        int dice = Randoms.pickNumberInRange(0, 9);
-        if (dice >= 4) {
-            racer.goForward();
-        }
-    }
 
     private static Car[] createCars(String[] racerList) {
         Car[] racer = new Car[racerList.length];
@@ -59,5 +37,39 @@ public class RacingGame {
             racer[i] = Car.of(racerList[i]);
         }
         return racer;
+    }
+
+    private static void forwardOrNot(Car racer) {
+        int value = Randoms.pickNumberInRange(0, 9);
+        if (value >= 4) {
+            racer.goForward();
+        }
+    }
+
+    private static int findMaxRecord(Car[] playerList) {
+        int max = Integer.MIN_VALUE;
+        for (Car car : playerList) {
+            max = Math.max(max, car.getDistance());
+        }
+        return max;
+    }
+
+    private static StringBuilder getWinnerList(Car[] playerList, int bestRecord) {
+        StringBuilder winnerList = new StringBuilder();
+        for (Car racer : playerList) {
+            if (bestRecord != racer.getDistance()) {
+                continue;
+            }
+            addWinnerList(racer, winnerList);
+        }
+        return winnerList;
+    }
+
+    private static void addWinnerList(Car racer, StringBuilder winnerList) {
+        if (winnerList.isEmpty()) {
+            winnerList.append(racer.getRacer());
+        } else {
+            winnerList.append(", ").append(racer.getRacer());
+        }
     }
 }
