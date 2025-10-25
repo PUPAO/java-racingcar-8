@@ -38,6 +38,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("-1")
+    void ExceptionUnderRoundTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,woni", "-1"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
