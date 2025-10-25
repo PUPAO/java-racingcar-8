@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputDisplay {
 
-    String[] getRacerList(){
+    String[] getRacerList() {
         String[] racerList = Console.readLine().split(",");
         return racerList;
     }
