@@ -24,6 +24,7 @@ class ApplicationTest extends NsTest {
                 STOP
         );
     }
+
     @Test
     @DisplayName("우승자 테스트")
     void WinnerTest() {
