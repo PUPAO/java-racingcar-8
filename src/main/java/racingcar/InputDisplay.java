@@ -15,7 +15,7 @@ public class InputDisplay {
     private void validNamesLength(String[] racerList) {
         for(String str : racerList){
             if(str.length() > limitNameLength)
-                throw new racingException("이름이 너무 길어용");
+                throw new racingException("이름이 너무 길어요. "+limitNameLength+"글자를 넘지 않게 주의하세요.");
         }
     }
 
