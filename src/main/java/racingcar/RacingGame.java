@@ -25,10 +25,24 @@ public class RacingGame {
         }
 
         // 우승자 출력
-        String[] winnerList = racerList;
-        for (String i : winnerList) {
-            System.out.println("최종 우승자 : " + i);
+        int max = Integer.MIN_VALUE;
+        StringBuilder winnerList = new StringBuilder();
+
+        for (Car car : playerList) {
+            max = Math.max(max, car.getDistance());
         }
+
+        for (Car car : playerList) {
+            if (max == car.getDistance()) {
+                if (winnerList.isEmpty()) {
+                    winnerList.append(car.getRacer());
+                } else {
+                    winnerList.append(", ").append(car.getRacer());
+                }
+            }
+        }
+
+        System.out.println("최종 우승자 : " + winnerList);
     }
 
 
