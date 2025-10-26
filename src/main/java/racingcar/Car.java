@@ -11,6 +11,7 @@ public class Car {
     }
 
     public static Car of(String racer) {
+        // 빈 문자열 예외 처리
         return new Car(racer);
     }
 

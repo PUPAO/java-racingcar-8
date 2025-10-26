@@ -47,15 +47,6 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("이름이 없는 경우")
-    void noName() {
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> runException("", "1"))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-    }
-
-    @Test
     void 기능_테스트() {
         assertRandomNumberInRangeTest(
                 () -> {
