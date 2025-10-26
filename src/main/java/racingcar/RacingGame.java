@@ -16,6 +16,15 @@ public class RacingGame {
         Car[] playerList = createCars(racerList);
 
         // 경기 중
+        playing(round, playerList);
+
+        // 우승자 출력
+        int bestRecord = findMaxRecord(playerList);
+        StringBuilder winnerList = getWinnerList(playerList, bestRecord);
+        outputDisplay.showWinner(winnerList);
+    }
+
+    private void playing(int round, Car[] playerList) {
         while (round-- != 0) {
 
             for (Car racer : playerList) {
@@ -23,11 +32,6 @@ public class RacingGame {
             }
             outputDisplay.showRoundResult(playerList);
         }
-
-        // 우승자 출력
-        int bestRecord = findMaxRecord(playerList);
-        StringBuilder winnerList = getWinnerList(playerList, bestRecord);
-        outputDisplay.showWinner(winnerList);
     }
 
 
