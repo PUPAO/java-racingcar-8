@@ -5,6 +5,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class RacingGame {
     private final InputDisplay inputDisplay = new InputDisplay();
     private final OutputDisplay outputDisplay = new OutputDisplay();
+    private static final int forwardThreshold = 4;
+    private static final int minimumNumber = 0;
+    private static final int maximumNumber = 9;
 
     public void run() {
         outputDisplay.askCarsName();
@@ -24,6 +27,14 @@ public class RacingGame {
         outputDisplay.showWinner(winnerList);
     }
 
+    private static Car[] createCars(String[] racerList) {
+        Car[] racer = new Car[racerList.length];
+        for (int i = 0; i < racerList.length; i++) {
+            racer[i] = Car.of(racerList[i]);
+        }
+        return racer;
+    }
+
     private void playing(int round, Car[] playerList) {
         while (round-- != 0) {
 
@@ -34,18 +45,9 @@ public class RacingGame {
         }
     }
 
-
-    private static Car[] createCars(String[] racerList) {
-        Car[] racer = new Car[racerList.length];
-        for (int i = 0; i < racerList.length; i++) {
-            racer[i] = Car.of(racerList[i]);
-        }
-        return racer;
-    }
-
     private static void forwardOrNot(Car racer) {
-        int value = Randoms.pickNumberInRange(0, 9);
-        if (value >= 4) {
+        int value = Randoms.pickNumberInRange(minimumNumber, maximumNumber);
+        if (value >= forwardThreshold) {
             racer.goForward();
         }
     }
