@@ -16,7 +16,7 @@ public class OutputDisplay {
         }
     }
 
-    void showWinner(StringBuilder winnerList){
+    void showWinner(StringBuilder winnerList) {
         System.out.println("최종 우승자 : " + winnerList);
     }
 }
