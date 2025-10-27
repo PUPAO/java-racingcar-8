@@ -20,8 +20,8 @@ public class RacingGame {
         playing(round, playerList);
 
         // 우승자 출력
-        int bestRecord = findMaxRecord(playerList);
-        StringBuilder winnerList = getWinnerList(playerList, bestRecord);
+        Winner winner = new Winner();
+        StringBuilder winnerList = winner.calculateWinners(playerList);
         outputDisplay.showWinner(winnerList);
     }
 
@@ -38,33 +38,6 @@ public class RacingGame {
         int value = Randoms.pickNumberInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER);
         if (value >= FORWARD_THRESHOLD) {
             racer.goForward();
-        }
-    }
-
-    private static int findMaxRecord(Car[] playerList) {
-        int max = Integer.MIN_VALUE;
-        for (Car car : playerList) {
-            max = Math.max(max, car.getDistance());
-        }
-        return max;
-    }
-
-    private static StringBuilder getWinnerList(Car[] playerList, int bestRecord) {
-        StringBuilder winnerList = new StringBuilder();
-        for (Car racer : playerList) {
-            if (bestRecord != racer.getDistance()) {
-                continue;
-            }
-            addWinnerList(racer, winnerList);
-        }
-        return winnerList;
-    }
-
-    private static void addWinnerList(Car racer, StringBuilder winnerList) {
-        if (winnerList.isEmpty()) {
-            winnerList.append(racer.getRacer());
-        } else {
-            winnerList.append(", ").append(racer.getRacer());
         }
     }
 }
