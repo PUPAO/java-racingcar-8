@@ -4,23 +4,19 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputDisplay {
 
-    int limitNameLength = 5;
-
-    String[] getRacerList() {
+    Car[] getRacerList() {
         String[] racerList = Console.readLine().split(",");
-        validNamesLength(racerList);
-        return racerList;
+        return createCars(racerList);
     }
 
-    private void validNamesLength(String[] racerList) {
-        for (String name : racerList) {
-            if (name.length() > limitNameLength) {
-                throw new racingException("이름이 너무 길어요. " + limitNameLength + "글자를 넘지 않게 주의하세요.");
-            } else if (name.isEmpty()) {
-                throw new racingException("이름이 없어요. 이름을 생성해주세요");
-            }
+    private Car[] createCars(String[] racerList) {
+        Car[] racer = new Car[racerList.length];
+        for (int i = 0; i < racerList.length; i++) {
+            racer[i] = Car.of(racerList[i]);
         }
+        return racer;
     }
+
 
     public int getRound() {
         int count;

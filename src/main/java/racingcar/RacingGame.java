@@ -11,12 +11,10 @@ public class RacingGame {
 
     public void run() {
         outputDisplay.askCarsName();
-        String[] racerList = inputDisplay.getRacerList();
+        Car[] playerList = inputDisplay.getRacerList();
 
         outputDisplay.askRoundNumber();
         int round = inputDisplay.getRound();
-
-        Car[] playerList = createCars(racerList);
 
         // 경기 중
         playing(round, playerList);
@@ -25,14 +23,6 @@ public class RacingGame {
         int bestRecord = findMaxRecord(playerList);
         StringBuilder winnerList = getWinnerList(playerList, bestRecord);
         outputDisplay.showWinner(winnerList);
-    }
-
-    private static Car[] createCars(String[] racerList) {
-        Car[] racer = new Car[racerList.length];
-        for (int i = 0; i < racerList.length; i++) {
-            racer[i] = Car.of(racerList[i]);
-        }
-        return racer;
     }
 
     private void playing(int round, Car[] playerList) {
