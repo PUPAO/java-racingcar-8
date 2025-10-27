@@ -14,7 +14,7 @@ public class RacingGame {
         Car[] playerList = inputDisplay.getRacerList();
 
         outputDisplay.askRoundNumber();
-        int round = inputDisplay.getRound();
+        Round round = inputDisplay.getRound();
 
         // 경기 중
         playing(round, playerList);
@@ -25,9 +25,8 @@ public class RacingGame {
         outputDisplay.showWinner(winnerList);
     }
 
-    private void playing(int round, Car[] playerList) {
-        while (round-- != 0) {
-
+    private void playing(Round round, Car[] playerList) {
+        for(int i = 0 ; i < round.getRound(); i++) {
             for (Car racer : playerList) {
                 forwardOrNot(racer);
             }

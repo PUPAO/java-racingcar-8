@@ -17,25 +17,9 @@ public class InputDisplay {
         return racer;
     }
 
-
-    public int getRound() {
-        int count;
-
-        try {
-            count = Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new racingException("숫자만 입력하세요.");
-        }
-
-        positiveNumber(count);
-
-        return count;
-    }
-
-    private static void positiveNumber(int count) {
-        if (count <= 0) {
-            throw new racingException("양수만 입력하세요.");
-        }
+    public Round getRound() {
+        String input = Console.readLine();
+        return Round.of(input);
     }
 
 }
