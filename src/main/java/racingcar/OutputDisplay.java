@@ -19,4 +19,12 @@ public class OutputDisplay {
     void showWinner(StringBuilder winnerList) {
         System.out.println("Final Winner : " + winnerList);
     }
+
+    void askDelimiterAddition() {
+        System.out.println("The default delimiter is a comma. Would you like to add a delimiter? (If so, enter yes.)");
+    }
+
+    void showAddDelimiter() {
+        System.out.println("Please enter the delimiter you want to add.");
+    }
 }

@@ -2,45 +2,28 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class InputDisplay {
 
-    Car[] getRacerList() {
-        String input = Console.readLine().trim();
+    String getRacerList() {
+        String roster = Console.readLine().trim();
 
-        if (input.isEmpty()) {
+        if (roster.isEmpty()) {
             throw new racingException("You must enter at least one name.");
         }
-
-        String[] racerList = input.split("[,]+");
-
-        validateDuplicate(racerList);
-
-        return createCars(racerList);
+        return roster;
     }
 
-    private Car[] createCars(String[] racerList) {
-        Car[] racer = new Car[racerList.length];
-        for (int i = 0; i < racerList.length; i++) {
-            racer[i] = Car.of(racerList[i]);
-        }
-        return racer;
+    public String getYesOrNo() {
+        return Console.readLine().trim().toLowerCase();
+    }
+
+    public String getDelimiter() {
+        return Console.readLine().trim();
     }
 
     public Round getRound() {
         String input = Console.readLine();
         return Round.of(input);
-    }
-
-    private void validateDuplicate(String[] names) {
-        Set<String> unique = new HashSet<>();
-        for (String name : names) {
-            if (!unique.add(name)) {
-                throw new racingException("Duplicate racer name: " + name);
-            }
-        }
     }
 
 }
