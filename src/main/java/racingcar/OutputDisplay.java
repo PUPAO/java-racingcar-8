@@ -3,11 +3,11 @@ package racingcar;
 public class OutputDisplay {
 
     void askCarsName() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println("Enter the name of the car you want to race. (Names are separated by commas)");
     }
 
     void askRoundNumber() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println("How many times can I try?");
     }
 
     void showRoundResult(Car[] playerList) {
@@ -17,6 +17,6 @@ public class OutputDisplay {
     }
 
     void showWinner(StringBuilder winnerList) {
-        System.out.println("최종 우승자 : " + winnerList);
+        System.out.println("Final Winner : " + winnerList);
     }
 }

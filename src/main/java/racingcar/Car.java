@@ -15,9 +15,9 @@ public class Car {
     public static Car of(String racerName) {
 
         if (racerName.length() > limitNameLength) {
-            throw new racingException("이름이 너무 길어요. " + limitNameLength + "글자를 넘지 않게 주의하세요.");
+            throw new racingException("Your name is too long. Be careful not to exceed" + limitNameLength + " characters.");
         } else if (racerName.isEmpty()) {
-            throw new racingException("이름이 없어요. 이름을 생성해주세요");
+            throw new racingException("There is no name. Please create a name.");
         }
 
         return new Car(racerName);
