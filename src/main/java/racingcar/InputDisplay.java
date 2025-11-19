@@ -2,6 +2,9 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputDisplay {
 
     Car[] getRacerList() {
@@ -12,6 +15,8 @@ public class InputDisplay {
         }
 
         String[] racerList = input.split("[,]+");
+
+        validateDuplicate(racerList);
 
         return createCars(racerList);
     }
@@ -27,6 +32,15 @@ public class InputDisplay {
     public Round getRound() {
         String input = Console.readLine();
         return Round.of(input);
+    }
+
+    private void validateDuplicate(String[] names) {
+        Set<String> unique = new HashSet<>();
+        for (String name : names) {
+            if (!unique.add(name)) {
+                throw new racingException("Duplicate racer name: " + name);
+            }
+        }
     }
 
 }
