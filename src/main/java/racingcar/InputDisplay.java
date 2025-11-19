@@ -5,7 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputDisplay {
 
     Car[] getRacerList() {
-        String[] racerList = Console.readLine().split(",");
+        String input = Console.readLine().trim();
+
+        if (input.isEmpty()) {
+            throw new racingException("You must enter at least one name.");
+        }
+
+        String[] racerList = input.split("[,]+");
+
         return createCars(racerList);
     }
 
